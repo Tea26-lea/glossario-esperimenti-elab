@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glossario interattivo dei 92 esperimenti ELAB Tutor — 3 volumi, ricerca e filtri per navigare l'intero catalogo.">
+  <title>Glossario Esperimenti · ELAB Tutor</title>
+
+  <!-- Font: Open Sans (coerente con elabtutor.school) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon inline (emoji libro) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER — gradient blu come sul sito elabtutor.school
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container">
+      <h1>📚 Glossario Esperimenti · ELAB Tutor</h1>
+      <p class="subtitle">Tutti i 92 esperimenti dei 3 volumi, a portata di clic</p>
+
+      <div class="stats" aria-label="Statistiche generali">
+        <span><strong id="stat-total">92</strong>esperimenti</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong>3</strong>volumi</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong id="stat-chapters">24</strong>capitoli</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong>4</strong>progetti avanzati</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN — controlli (filtri + ricerca) e grid esperimenti
+       ============================================================ -->
+  <main>
+
+    <!-- Controls: filtri volume + barra ricerca -->
+    <section class="controls" aria-label="Filtri e ricerca">
+
+      <!-- Filtri volume: tabs accessibili -->
+      <div class="filters" role="tablist" aria-label="Filtra per volume">
+        <button class="filter-btn active" data-volume="all" role="tab" aria-selected="true">
+          <span class="emoji" aria-hidden="true">📚</span>
+          <span>Tutti i volumi</span>
+          <span class="count" id="count-all">92</span>
+        </button>
+        <button class="filter-btn vol-1" data-volume="1" role="tab" aria-selected="false">
+          <span class="emoji" aria-hidden="true">📗</span>
+          <span>Volume 1 · Le Basi</span>
+          <span class="count" id="count-1">38</span>
+        </button>
+        <button class="filter-btn vol-2" data-volume="2" role="tab" aria-selected="false">
+          <span class="emoji" aria-hidden="true">📘</span>
+          <span>Volume 2 · Approfondiamo</span>
+          <span class="count" id="count-2">27</span>
+        </button>
+        <button class="filter-btn vol-3" data-volume="3" role="tab" aria-selected="false">
+          <span class="emoji" aria-hidden="true">📙</span>
+          <span>Volume 3 · Arduino</span>
+          <span class="count" id="count-3">27</span>
+        </button>
+      </div>
+
+      <!-- Barra di ricerca -->
+      <div class="search-box">
+        <label for="search-input" class="sr-only">Cerca esperimento</label>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Cerca per titolo, descrizione, componente…"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button class="clear-btn" id="clear-search" aria-label="Cancella ricerca" type="button">×</button>
+      </div>
+
+    </section>
+
+    <!-- Riepilogo risultati -->
+    <div class="result-summary" id="result-summary">
+      <span id="result-count"><strong>92</strong> esperimenti mostrati</span>
+    </div>
+
+    <!-- Container che viene popolato da script.js -->
+    <section id="results" aria-live="polite"></section>
+
+    <!-- Empty state — nascosto di default, mostrato se zero risultati -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <span class="emoji" aria-hidden="true">🔍</span>
+      <h3>Nessun esperimento trovato</h3>
+      <p>Prova a cambiare volume o a semplificare la ricerca.</p>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       MODALE — dettaglio esperimento + glossario dei termini
+       Viene popolato da script.js quando si clicca una card
+       ============================================================ -->
+  <div id="modal-backdrop" class="modal-backdrop" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    Glossario prototipo · ELAB Tutor ·
+    <a href="https://elabtutor.school" target="_blank" rel="noopener">elabtutor.school</a>
+    · 92 esperimenti · aggiornato 18/04/2026
+  </footer>
+
+  <!-- Scripts: data + glossario prima, logic dopo -->
+  <script src="data.js"></script>
+  <script src="glossary.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

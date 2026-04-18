@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (nel caso si aggiunga build in futuro)
+node_modules/
+npm-debug.log
+
+# OS
+Thumbs.db
+desktop.ini
